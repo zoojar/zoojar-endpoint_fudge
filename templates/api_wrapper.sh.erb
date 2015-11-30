@@ -1,0 +1,27 @@
+#!/bin/bash
+# Script to query the console api (PE 2015.2) with SSL auth (locally from the master) and return response output for xinetd
+
+MASTER_FQDN="$(facter fqdn)"
+PORT="<%= @console_api_port %>"
+ENDPOINT="<%= @console_api_endpoint %>"
+CERT="$(puppet config print hostcert)"
+KEY="$(puppet config print hostprivkey)"
+CACERT="$(puppet config print cacert)"
+
+RESPONSE=$(curl -sX GET "https://$MASTER_FQDN:$PORT/$ENDPOINT" --cert "$CERT" --key "$KEY" --cacert "$CACERT")
+
+SIZE=${#RESPONSE}
+
+echo -en "HTTP/1.1 200 OK\r\n"
+sleep 0.1
+echo -en "Content-Type: application/json\r\n"
+sleep 0.1
+echo -en "Connection: close\r\n"
+sleep 0.1
+echo -en "Content-Length: $SIZE\r\n"
+sleep 0.1
+echo -en "\r\n"
+sleep 0.1
+echo -en $RESPONSE
+sleep 0.1
+exit 0
