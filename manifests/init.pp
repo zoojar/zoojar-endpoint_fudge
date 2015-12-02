@@ -1,5 +1,4 @@
-class endpoint_fudge {
-
+class endpoint_fudge (
   $xinetd_script          = $endpoint_fudge::params::xinetd_script,
   $xinetd_script_template = $endpoint_fudge::params::xinetd_script_template,
   $xinetd_user            = $endpoint_fudge::params::xinetd_user,
@@ -7,6 +6,7 @@ class endpoint_fudge {
   $xinetd_port            = $endpoint_fudge::params::xinetd_port,
   $console_api_port       = $endpoint_fudge::params::console_api_port,
   $console_api_endpoint   = $endpoint_fudge::params::console_api_endpoint,
+) inherits endpoint_fudge::params {
 
   file { $xinetd_script:
     ensure  => file,
