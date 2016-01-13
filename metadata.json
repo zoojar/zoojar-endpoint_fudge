@@ -2,33 +2,31 @@
   "name": "zoojar-endpoint_fudge",
   "version": "0.0.1",
   "author": "David Newton",
-  "summary": "Xinetd plain http endpoint that exposes classes from the puppetmaster api",
-  "license": "Apache-2.0",
+  "summary": "Xinetd plain http endpoint that exposes a json blob of classes from the puppetmaster api - or any other requests",
+  "license": "Apache",
   "source": "https://github.com/zoojar/zoojar-endpoint_fudge",
   "project_page": "https://github.com/zoojar/zoojar-endpoint_fudge",
-  "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
+  "issues_url": "https://github.com/zoojar/zoojar-endpoint_fudge",
+  "dependencies": [
+    {
+      "name": "puppetlabs-xinetd",
+      "version_requirement": ">= 1.5.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "5",
         "6",
         "7"
       ]
     },
-  ],
-  "requirements": [
     {
-      "name": "pe",
-      "version_requirement": "= 2015.2.0"
-    },
-    {
-      "name": "puppet",
-      "version_requirement": ">= 3.8.0 < 5.0.0"
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
     }
-  ],
-  "description": "Module to configure an xinetd plain http endpoint that exposes classes from the puppetmaster api (fudge for lack of session based auth on console api)",
-  "dependencies": [
-    {"name":"puppetlabs/xinetd","version_requirement":">= 1.5.0"}
   ]
 }
