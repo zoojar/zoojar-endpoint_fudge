@@ -6,4 +6,7 @@ class endpoint_fudge::params {
     $xinetd_script_template = 'endpoint_fudge/api_wrapper.sh.erb'
     $xinetd_user            = 'root'
     $xinetd_group           = 'root'
+    $xinetd_protocol        = 'tcp'
+    $xinetd_socket_type     = 'stream'
+    $xinetd_wait            = 'no'
 }
